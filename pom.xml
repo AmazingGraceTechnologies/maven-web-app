@@ -59,6 +59,7 @@
 		</dependency>
 
 		<!-- compile dependencies -->
+		<!-- provided dependencies -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
