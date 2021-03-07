@@ -7,27 +7,27 @@ stage('1. CodeClone')
 }
 stage('2. Build')
 {
-   // sh "${mavenHome}/bin/mvn package"
+   sh "${mavenHome}/bin/mvn package"
 }
 stage('3. CodeQuality')
 {
- //   sh "${mavenHome}/bin/mvn sonar:sonar"
+   sh "${mavenHome}/bin/mvn sonar:sonar"
 }
 stage('4. UploadNexus')
 {
- //   sh "${mavenHome}/bin/mvn deploy"
+    sh "${mavenHome}/bin/mvn deploy"
 }
 stage('5. Approval')
 {
-//    echo "Approved. Ready for deployment"
+    echo "Approved. Ready for deployment"
 }
-//stage('6. TomcatDeployment')
+stage('6. TomcatDeployment')
 {
-  //  deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://3.96.54.134:8888')], contextPath: null, war: 'target/*war'
+    deploy adapters: [tomcat9(credentialsId: 'tomcat-credential', path: '', url: 'http://3.96.54.134:8888')], contextPath: null, war: 'target/*war'
 }
 stage('7. Notification' )
 {
- //   emailextrecipients([developers()])
+    emailextrecipients([developers()])
 }
     
 }
